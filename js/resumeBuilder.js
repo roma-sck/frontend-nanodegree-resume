@@ -9,7 +9,7 @@ My resume.
         "mobile": "223-322-223-322",
         "email": "roma.sck@gmail.com",
         "github": "roma-sck@github.com",
-        "location": "Dnipropetrovsk"
+        "location": "Dnepropetrovsk"
     },
     "skills": ["Java Core", "Android SDK", "HTML/CSS", "JS", "Git", "SQL"],
     "bioPic": "images/croco.jpg",
@@ -68,13 +68,15 @@ var work = {
         "employer": "ALAVES SPECTRANS LTD",
         "title": "Manager of business and management",
         "dates": "2009-2011",
-        "description": "Organization of oversized shipments"
+        "description": "Organization of oversized shipments",
+        "location" : "Slobozhanskyi Avenue, 35, Dnepropetrovsk"
     },
     {
         "employer": "EVRAZ DMZ Petrovskogo",
         "title": "Last position – “Engineer of II category”",
         "dates": "2011-2015",
-        "description": "Monitoring and analysis of targets and their actual implementation, reporting, presentations to management"
+        "description": "Monitoring and analysis of targets and their actual implementation, reporting, presentations to management",
+        "location" : "Mayakovs'koho Street, 16, Dnepropetrovsk"
     }
     ]
 };
@@ -98,36 +100,18 @@ function displayWork()
 displayWork();
 
 
-// $(document).click(function(loc) {
-// 	var x = loc.pageX;
-// 	var y = loc.pageY;
-
-// 	logClicks(x,y);
-// });
-
-
-// /*function changes name "jOhN dOe" to "John DOE"*/
-// function inName(name)
-// {
-//     name = name.trim().split(" ");
-//     console.log(name);
-//     name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-//     name[1] = name[1].toUpperCase();
-//     return name[0] + " " + name[1];
-// }
-
-//$("#main").append(internationalizeButton);
-
 var education = {
-    "school":
+    "schools": [
     {
         "name": "National Mining University",
         "city": "Dnipropetrovsk",
         "degree": "Specialist",
         "majors":["Mining Engineer"],
         "dates": "2004-2009",
-        "url": "www.nmu.org.ua"
-    },
+        "url": "www.nmu.org.ua",
+        "location" : "Karla Marksa Avenue 19/1, Dnepropetrovsk"
+    }
+    ],
     "courses": [
     {
         "title": "Fundamentals of the Java programming language",
@@ -153,16 +137,18 @@ var education = {
 function displayEducation()
 {
     $('#education').append(HTMLschoolStart);
-    var formattedName = HTMLschoolName.replace('%data%', education.school.name);
-    $(".education-entry:last").append(formattedName);
-    var formattedDates = HTMLschoolDates.replace('%data%', education.school.dates);
-    $(".education-entry:last").append(formattedDates);
-    var formattedLocation = HTMLschoolLocation.replace('%data%', education.school.city);
-    $(".education-entry:last").append(formattedLocation);
-    var formattedMajor = HTMLschoolMajor.replace('%data%', education.school.majors);
-    $(".education-entry:last").append(formattedMajor);
+    for (school in education.schools)
+    {
+        var formattedName = HTMLschoolName.replace('%data%', education.schools[school].name);
+        $(".education-entry:last").append(formattedName);
+        var formattedDates = HTMLschoolDates.replace('%data%', education.schools[school].dates);
+        $(".education-entry:last").append(formattedDates);
+        var formattedLocation = HTMLschoolLocation.replace('%data%', education.schools[school].city);
+        $(".education-entry:last").append(formattedLocation);
+        var formattedMajor = HTMLschoolMajor.replace('%data%', education.schools[school].majors);
+        $(".education-entry:last").append(formattedMajor);
+    }
 
-  
     for (course in education.courses)
     {
         var formattedTitle = HTMLonlineTitle.replace('%data%', education.courses[course].title);
@@ -186,7 +172,7 @@ var projects = {
         "title": "Censor News Reader",
         "dates": "2015",
         "description": "Simple Android news reader from http://censor.net.ua. Source code : https://github.com/roma-sck/Censor-News-Reader",
-        "image" : "https://raw.githubusercontent.com/roma-sck/frontend-nanodegree-resume/master/proj_screenshot.jpg"
+        "image" : "https://raw.githubusercontent.com/roma-sck/frontend-nanodegree-resume/master/images/proj_screenshot.jpg"
     }
     ]
 };
@@ -209,3 +195,19 @@ projects.display = function()
     }
 
 projects.display();
+
+
+/*function changes name "jOhN dOe" to "John DOE"*/
+function inName(name)
+{
+    name = name.trim().split(" ");
+    console.log(name);
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+    name[1] = name[1].toUpperCase();
+    return name[0] + " " + name[1];
+}
+
+$("#main").append(internationalizeButton);
+
+$("#mapDiv").append(googleMap);
+

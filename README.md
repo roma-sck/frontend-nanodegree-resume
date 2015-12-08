@@ -1,3 +1,10 @@
+My fineshed resume)
+
+![alt tag](https://raw.githubusercontent.com/roma-sck/frontend-nanodegree-resume/master/images/finished_resume.jpg)
+
+Original description is below.
+_______________________________________________________________________________________________________________
+
 ## How do I complete this project?
 
 1. Go to the [Javascript Basics course](https://www.udacity.com/course/ud804) and select "View Course Materials."
